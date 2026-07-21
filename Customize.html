@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon-16x16.png">
+    <title>| Customized Cream</title>
+    <style>
+       body {
+        font-family: Arial, sans-serif;
+        background-color: #FAF8F8;
+        margin: 0;
+        padding: 20px;
+    }
+    * {
+        box-sizing: border-box;
+        margin-left: 10px;
+    }
+
+        #cart-button {
+            position: absolute;
+            top: 25px;
+            left: 11px;
+            padding: 10px 25px;
+            background-color: #9ebd72;
+            /* Light Green */
+            color: #fff;
+            /* White text */
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #cart-button:hover {
+
+            background-color: #647d42;
+            /* Light Green */
+            color: #fff;
+            /* White text */
+        }
+
+        #logo-image {
+            width: 100px;
+            height: 50px;
+            position: absolute;
+            top: 20px;
+            right: 19px;
+        }
+
+        nav {
+            box-sizing: border-box;
+            margin-left: 20px;
+            margin-top: 60px;
+            background-color: #FAF8F8;
+            ;
+            /* White */
+            overflow: hidden;
+            border-bottom: 1px solid #c1c0c0;
+            /* Grey border on top */
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #000;
+            /* Black */
+            text-align: center;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #bccea3;
+            /* Light grey on hover */
+            color: black;
+        }
+
+        .section-title {
+            color: black;
+            /* Black title */
+            margin-top: 20px;
+            /* Margin between title and dropdown */
+            text-align: center;
+        }
+
+        .custom-dropdown {
+            background-color: #FAFAF5;
+            border: 1px solid #CAD3C3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 300px;
+        }
+
+        .submit-button {
+            background-color: #88ab59;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #total-price {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #6e8b47;
+            /* Green */
+        }
+    </style>
+</head>
+
+<body>
+    <button id="cart-button" onclick="window.location.href='Order.html'">Cart</button>
+    <img src="logo.png" alt="Logo" id="logo-image">
+
+    <nav>
+        <a href="HomePage.html">Home</a>
+        <a href="Products.php">Product</a>
+        <a href="Customize.html">Customize your own cream</a>
+        <a href="consultation.html">Get consultation</a>
+        <a href="technicalSupport.html">Technical Support</a>
+    </nav>
+
+    <form id="customize-form" action="Customized.php" method="post">
+
+        <h3 class="section-title">Customize your own cream</h3>
+
+        <div class="custom-dropdown">
+
+
+            <label for="quantity">Quantity:</label>
+            <br>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+            <br>
+            <br>
+
+            <label for="preservatives">Preservatives:</label>
+            <br>
+            <input type="checkbox" id="optiphen" name="preservatives[]" value="Optiphen+">
+            <label for="optiphen">Optiphen+</label>
+            <br>
+            <input type="checkbox" id="imadozolidinyl" name="preservatives[]" value="Imadozolidinyl Urea">
+            <label for="imadozolidinyl">Imadozolidinyl Urea</label>
+            <br>
+            <input type="checkbox" id="diazolidinyl" name="preservatives[]" value="Diazolidinyl Urea">
+            <label for="diazolidinyl">Diazolidinyl Urea</label>
+            <br>
+            <br>
+
+            <label for="availability">Availability:</label>
+            <br>
+            <input type="checkbox" id="vitaminC" name="availability[]" value="Vitamin C">
+            <label for="vitaminC">Vitamin C</label>
+            <br>
+            <input type="checkbox" id="vitaminE" name="availability[]" value="Vitamin E">
+            <label for="vitaminE">Vitamin E</label>
+            <br>
+
+            <input type="hidden" id="total-price-input" name="total_price">
+
+            <button type="submit" class="submit-button">Add to Cart</button>
+
+        </div>
+
+    </form>
+
+    <div id="total-price"></div>
+
+    <script>
+        var form = document.getElementById('customize-form');
+        var sizeSelect = document.getElementById('size');
+        var quantityInput = document.getElementById('quantity');
+        var preservativesCheckboxes = document.querySelectorAll('input[name="preservatives[]"]');
+        var availabilityCheckboxes = document.querySelectorAll('input[name="availability[]"]');
+        var totalPriceElement = document.getElementById('total-price');
+
+        form.addEventListener('change', calculatePrice);
+
+        function calculatePrice() {
+            var quantity = parseInt(quantityInput.value);
+            var preservatives = Array.from(preservativesCheckboxes).filter(cb => cb.checked).map(cb => cb.value).join(', ');
+            var availability = Array.from(availabilityCheckboxes).filter(cb => cb.checked).map(cb => cb.value).join(', ');
+            var price = 15;
+
+            // Additional cost for selected preservatives and availabilities
+            price += Array.from(preservativesCheckboxes).filter(cb => cb.checked).length * 3;
+            price += Array.from(availabilityCheckboxes).filter(cb => cb.checked).length * 2;
+
+            // Total price based on quantity
+            price *= quantity;
+
+            // Display total price
+            totalPriceElement.innerText = 'Total Price: $' + price.toFixed(2);
+
+            // Set the value of the hidden input field
+            document.getElementById('total-price-input').value = price.toFixed(2);
+        }
+
+
+        function showAlert() {
+            alert("Customized Cream was added successfully to the cart.");
+        }
+
+        function validateForm() {
+            var selectedPreservatives = Array.from(preservativesCheckboxes).some(cb => cb.checked);
+            var selectedAvailability = Array.from(availabilityCheckboxes).some(cb => cb.checked);
+
+            if (!selectedPreservatives && !selectedAvailability) {
+                alert("Please select at least one preservative or one availability.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Validate the form
+            var isValid = validateForm();
+
+            if (isValid) {
+                // If the form is valid, show the success message
+                showAlert();
+
+                // Proceed with form submission (if needed)
+                form.submit(); // Uncomment this line if you want to proceed with the form submission
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>

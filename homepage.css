@@ -1,0 +1,156 @@
+/* Reset default margin and padding */
+body {
+    background-color: #FAF8F8;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow:auto;
+
+}
+
+#logout {
+    color: dimgray;
+    font-size:small;
+    position: absolute;
+    top: 25px;
+    left: 90px;
+    margin-left: 8px;
+    margin-bottom: 10px;
+    padding: 10px 25px;
+    border: none;
+    background-color: #FAF8F8;
+}
+
+#logout:hover {
+    background-color: #9ebd72;
+    /* Light Green */
+    color: #ebe7e7;
+    /* White text */
+    position: absolute;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#background {
+
+    background-image: url('green back.jpg');
+    border-radius: 3px;
+    padding: 10px;
+
+}
+
+#cart-button {
+    position: absolute;
+    top: 25px;
+    left: 11px;
+    padding: 10px 25px;
+    background-color: #9ebd72;
+    /* Light Green */
+    color: #fff;
+    /* White text */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#cart-button:hover {
+
+    background-color: #647d42;
+    /* Light Green */
+    color: #fff;
+    /* White text */
+}
+
+#logo-image {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+}
+
+nav {
+
+    text-align: center;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    background-color: #FAF8F8;
+    padding: 10px;
+    padding-left: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #c1c0c0;
+}
+
+
+
+nav a {
+    display: inline-block;
+    color: #000;
+    /* Black */
+    text-align: center;
+    padding: 12px 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #bccea3;
+    /* Light grey on hover */
+    color: black;
+}
+
+/* Add CSS for the green footer */
+footer {
+    background-color: #98bf64;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* CSS for the main content area */
+.main-content {
+    background-color: #FFFFFF;
+    border: 1px solid #dedcdc;
+    border-radius: 3%;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.center-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+

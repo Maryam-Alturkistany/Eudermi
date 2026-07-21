@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon-16x16.png">
+  <title>| Technical Support</title>
+  <link rel="stylesheet" href="technical support.css">
+
+</head>
+
+<body>
+  <button id="cart-button" onclick="window.location.href='Order.html'">Cart</button>
+  <img src="logo.png" alt="Logo" id="logo-image">
+
+  <nav>
+    <a href="HomePage.html">Home</a>
+    <a href="Products.php">Product</a>
+    <a href="Customize.html">Customize your own cream</a>
+    <a href="consultation.html">Get consultation</a>
+    <a href="technicalSupport.html">Technical Support</a>
+  </nav>
+
+  <div class="container">
+    <h1>Technical Support</h1>
+    <form action="technical_support.php" method="post">
+      <label for="fname">Name</label>
+      <input type="text" id="fname" name="Name" placeholder="Your name.." required>
+
+      <label for="email">Email</label>
+      <input type="text" id="email" name="Email" placeholder="Your Email.." required>
+
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="sa">Saudi Arabia</option>
+        <option value="kw">Kuwait</option>
+        <option value="us">USA</option>
+      </select>
+
+      <label for="Issue">Issue</label>
+      <textarea id="Issue" name="Issue" placeholder="Write message.." required></textarea>
+
+      <input type="submit" name="Submit" value="Submit">
+    </form>
+  </div>
+
+</body>
+
+</html>
